@@ -5,63 +5,42 @@ Kenzie assignment: List1
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Robert Havelaar, Demo, Group C study group, I looked at Sara Beverton's repo AFTER I was finshed."
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
-# Instructions:
-# Complete each function below by writing the code for it. main() is already
-# set up to test all the functions with a few different inputs, printing 'OK'
-# for each function once it returns the correct result.
-# The starter code for each function includes a bare 'return' which is just a
-# placeholder for your code.
-
-# A. match_ends
-# Given a list of strings, return the count of the number of
-# strings where the string length is 2 or more and the first
-# and last chars of the string are the same.
-# Note: python does not have a ++ operator, but += works.
-
 
 def match_ends(words):
-    # your code here
-    return
-
-
-# B. front_x
-# Given a list of strings, return a list with the strings in
-# sorted order, except group all the strings that begin with
-# 'x' first.
-# Example:
-#   ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'] yields
-#   ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
-# Hint: this can be done by making 2 lists and sorting each
-# of them before combining them.
+    x = 0
+    for word in words:
+        if len(word) >= 2 and word[0].lower() == word[-1].lower():
+            x += 1
+    return x
 
 
 def front_x(words):
-    # your code here
-    return
+    xlist = []
+    alist = []
 
+    for word in words:
+        if word.startswith('x'):
+            xlist.append(word)
+        else:
+            alist.append(word)
 
-# C. sort_last
-# Given a list of non-empty tuples, return a list sorted in
-# increasing order by the last element in each tuple.
-# Example
-#   [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
-#   [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
-# Hint: use a custom key= function to extract the last element from each tuple.
+    return sorted(xlist) + sorted(alist)
 
 
 def sort_last(tuples):
-    # your code here
-    return
+    return sorted(tuples, key=sort_last_value)
 
 
-# Provided simple test() function used in main() to print
-# what each function returns vs. what it's supposed to return.
+def sort_last_value(t):
+    return t[-1]
+
+
 def test(got, expected):
     if got == expected:
         prefix = ' OK '
